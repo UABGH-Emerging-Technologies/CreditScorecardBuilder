@@ -1,0 +1,20 @@
+{
+  "// Comments": "Configuration for scorecard monitoring and PSI calculation",
+  "// Note": "Use null for package default values",
+  "// Documentation": "https://optbinning.readthedocs.io/en/stable/scorecard_monitoring.html",
+  
+  "psi_method": "quantile",
+  "// psi_method_comment": "Method for PSI calculation: 'quantile', 'cart', 'uniform' (default: 'quantile')",
+  
+  "psi_n_bins": 5,
+  "// psi_n_bins_comment": "Maximum number of bins for PSI calculation (default: 5)",
+  
+  "psi_min_bin_size": 0.05,
+  "// psi_min_bin_size_comment": "Minimum bin size for PSI (default: 0.05 = 5%)",
+  
+  "show_digits": 2,
+  "// show_digits_comment": "Number of decimal places to show in output (default: 2)",
+  
+  "verbose": false,
+  "// verbose_comment": "Enable verbose output (default: false)"
+}

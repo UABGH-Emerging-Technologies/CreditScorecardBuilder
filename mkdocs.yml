@@ -1,0 +1,20 @@
+
+# mkdocs.yml
+site_name: CreditScore
+site_url: http://localhost:8000
+nav:
+  - Home: index.md
+  - workflows:
+    - main: CreditScore/main.md
+  - CreditScore:
+    - plotter: CreditScore/plotter.md
+    - data: CreditScore/data.md
+    - evaluate: CreditScore/evaluate.md
+    - predict: CreditScore/predict.md
+    - train: CreditScore/train.md
+    - utils: CreditScore/utils.md
+theme: readthedocs
+plugins:
+  - mkdocstrings
+watch:
+  - .  # reload docs for any file changes

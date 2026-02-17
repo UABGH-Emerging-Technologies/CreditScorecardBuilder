@@ -1,0 +1,19 @@
+{
+  "// Comments": "Configuration for automated variable selection",
+  "// Note": "Thresholds for filtering variables during selection process",
+  
+  "post_binning": {
+    "min_unique_values": 2,
+    "// min_unique_values_comment": "Minimum unique values required after binning to keep variable"
+  },
+  
+  "post_regularization": {
+    "coefficient_threshold": 1e-6,
+    "// coefficient_threshold_comment": "Minimum absolute coefficient value to keep variable (1e-6 = 0.000001)"
+  },
+  
+  "reporting": {
+    "verbose": true,
+    "// verbose_comment": "Enable detailed logging of variable removal reasons"
+  }
+}

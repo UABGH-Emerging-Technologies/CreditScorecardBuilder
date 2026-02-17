@@ -1,0 +1,22 @@
+{
+  "// Comments": "Configuration for hyperparameter search and cross-validation",
+  "// Note": "Use null to disable hyperparameter search",
+  
+  "hyperparameter_search": true,
+  "// hyperparameter_search_comment": "Whether to perform hyperparameter search (default: true)",
+  
+  "cv": 5,
+  "// cv_comment": "Number of cross-validation folds (default: 5)",
+  
+  "scoring": "average_precision",
+  "// scoring_comment": "Scoring metric for cross-validation (default: 'average_precision')",
+  
+  "n_jobs": -1,
+  "// n_jobs_comment": "Number of parallel jobs (-1 = all cores, default: -1)",
+  
+  "param_grid": {
+    "C": [0.01, 0.1, 1, 10],
+    "l1_ratio": [0.1, 0.5, 0.9]
+  },
+  "// param_grid_comment": "Parameter grid for ElasticNet logistic regression search"
+}

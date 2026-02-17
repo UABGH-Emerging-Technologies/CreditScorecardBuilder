@@ -1,0 +1,18 @@
+{
+  "// Comments": "Configuration for OptBinning Scorecard initialization",
+  "// Note": "Use null for package default values",
+  "// Documentation": "https://optbinning.readthedocs.io/en/stable/scorecard.html",
+  "scaling_method": "min_max",
+  "// scaling_method_comment": "Scaling method: 'min_max', 'pdo_odds' (default: 'min_max')",
+  "scaling_method_params": {
+    "min": 0,
+    "max": 1000
+  },
+  "// scaling_method_params_comment": "Parameters for scaling method",
+  "reverse_scorecard": true,
+  "// reverse_scorecard_comment": "When true, higher scores mean higher risk (reverses traditional credit scoring where higher=lower risk) (default: false)",
+  "intercept_based": true,
+  "// intercept_based_comment": "Whether to use intercept-based scoring (default: false)",
+  "rounding": true,
+  "// rounding_comment": "Whether to round scorecard points (default: true)"
+}

@@ -1,0 +1,36 @@
+{
+  "name": "CreditScore",
+  "theme": "mint",
+  "colors": {
+    "primary": "#0EA5E9",
+    "light": "#E0F2FE",
+    "dark": "#0369A1"
+  },
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Docs",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "index"
+            ]
+          },
+          {
+            "group": "CreditScore",
+            "pages": [
+              "CreditScore/data",
+              "CreditScore/train",
+              "CreditScore/evaluate",
+              "CreditScore/predict",
+              "CreditScore/utils",
+              "CreditScore/main",
+              "CreditScore/plotter"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

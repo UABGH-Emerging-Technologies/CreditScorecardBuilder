@@ -1,0 +1,8 @@
+
+    For research purposes only, use this model with caution.  
+    The model is **moderately reliable, suitable for risk assessment**, with a test accuracy of **0.89 (AUC)**. The highest risk factors determined were: **ComplicationMpogRenalRecoveryCreatinine_Value, PreopProtein_Days_Before, PreopAST_Days_Before**.
+    The training set and test set are **2.8% alike**, signifying **high similarity** in generalization.
+    The target variable distribution in the training data is **Class 0: 96.4% (26823 samples)** and
+    **Class 1: 3.6% (993 samples)**.  In the test data, **Class 0: 96.4% (6706 samples)** and **Class 1: 3.6% (248 samples)**.
+    For single patient risk please use the interactive risk calculator.
+    

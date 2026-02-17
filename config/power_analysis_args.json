@@ -1,0 +1,32 @@
+{
+  "// Comments": "Configuration for statistical power analysis",
+  "// Note": "Settings for sample size calculations and simulations",
+  
+  "default_alpha": 0.05,
+  "// default_alpha_comment": "Default significance level (Type I error rate)",
+  
+  "default_power": 0.80,
+  "// default_power_comment": "Default target statistical power (1 - Type II error rate)",
+  
+  "simulation": {
+    "min_sample_size": 50,
+    "// min_sample_size_comment": "Minimum sample size to test in simulations",
+    
+    "max_sample_size": 500,
+    "// max_sample_size_comment": "Maximum sample size to test in simulations",
+    
+    "step_size": 50,
+    "// step_size_comment": "Step size between sample sizes in simulations",
+    
+    "n_simulations": 1000,
+    "// n_simulations_comment": "Number of simulations per sample size"
+  },
+  
+  "logistic_regression": {
+    "max_iter": 10000,
+    "// max_iter_comment": "Maximum iterations for logistic regression convergence",
+    
+    "solver": "lbfgs",
+    "// solver_comment": "Solver for logistic regression: 'lbfgs', 'liblinear', 'saga'"
+  }
+}
