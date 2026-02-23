@@ -29,7 +29,9 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-
+.venv/
+venv/
+ 
 # PyInstaller
 #  Usually these files are written by a python script from a template
 #  before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -168,27 +170,4 @@ cython_debug/
 # secrets
 .streamlit/secrets.toml
 secrets/*
-# aider
 .aider*
-
-# image outputs while testing
-*.png
-
-# Python virtual environment
-.venv/
-
-# User-specific configuration
-config/user_config.json
-
-# llm_utils developer tooling and optional assets
-llm_utils/.devcontainer/
-llm_utils/.vscode/
-llm_utils/.streamlit/
-llm_utils/workspace.code-workspace
-llm_utils/docs/
-llm_utils/mkdocs.yml
-llm_utils/docker-compose.yml
-llm_utils/Docker/
-llm_utils/highres_common/tests/
-llm_utils/highres_common/old/
-llm_utils/highres_common/
