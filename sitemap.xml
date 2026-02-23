@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>http://localhost:8000/</loc>
+         <loc>https://github.com/UABGH-Emerging-Technologies/CreditScorecardBuilder/</loc>
          <lastmod>2026-02-23</lastmod>
     </url>
     <url>
-         <loc>http://localhost:8000/CreditScore/data/</loc>
+         <loc>https://github.com/UABGH-Emerging-Technologies/CreditScorecardBuilder/CreditScore/data/</loc>
          <lastmod>2026-02-23</lastmod>
     </url>
     <url>
-         <loc>http://localhost:8000/CreditScore/evaluate/</loc>
+         <loc>https://github.com/UABGH-Emerging-Technologies/CreditScorecardBuilder/CreditScore/evaluate/</loc>
          <lastmod>2026-02-23</lastmod>
     </url>
     <url>
-         <loc>http://localhost:8000/CreditScore/main/</loc>
+         <loc>https://github.com/UABGH-Emerging-Technologies/CreditScorecardBuilder/CreditScore/main/</loc>
          <lastmod>2026-02-23</lastmod>
     </url>
     <url>
-         <loc>http://localhost:8000/CreditScore/plotter/</loc>
+         <loc>https://github.com/UABGH-Emerging-Technologies/CreditScorecardBuilder/CreditScore/plotter/</loc>
          <lastmod>2026-02-23</lastmod>
     </url>
     <url>
-         <loc>http://localhost:8000/CreditScore/predict/</loc>
+         <loc>https://github.com/UABGH-Emerging-Technologies/CreditScorecardBuilder/CreditScore/predict/</loc>
          <lastmod>2026-02-23</lastmod>
     </url>
     <url>
-         <loc>http://localhost:8000/CreditScore/train/</loc>
+         <loc>https://github.com/UABGH-Emerging-Technologies/CreditScorecardBuilder/CreditScore/train/</loc>
          <lastmod>2026-02-23</lastmod>
     </url>
     <url>
-         <loc>http://localhost:8000/CreditScore/utils/</loc>
+         <loc>https://github.com/UABGH-Emerging-Technologies/CreditScorecardBuilder/CreditScore/utils/</loc>
          <lastmod>2026-02-23</lastmod>
     </url>
 </urlset>
