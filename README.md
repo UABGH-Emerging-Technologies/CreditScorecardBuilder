@@ -18,10 +18,6 @@ python3 -m pip install -U pip
 python3 -m pip install -r requirements.txt
 ```
 `requirements.txt` installs the local `llm_utils` package via `./llm_utils`.
-If you want editable development for that package:
-```bash
-python3 -m pip install -e ./llm_utils
-```
 
 ### 3) Configure data directory
 The app looks for data in `/data` (Docker) or via a devcontainer mount. If
