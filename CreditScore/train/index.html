@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://localhost:8000/CreditScore/train/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>train - CreditScore</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "train";
+        var mkdocs_page_input_path = "CreditScore/train.md";
+        var mkdocs_page_url = "/CreditScore/train/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> CreditScore
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">workflows</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../main/">main</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CreditScore</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../plotter/">plotter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../data/">data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../evaluate/">evaluate</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../predict/">predict</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">train</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#basemodel">BaseModel</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#optbinningscorecardmodel">OptbinningScorecardModel</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_1">Methods</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#returns">Returns</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#statsmodelslogisticmodel">StatsmodelsLogisticModel</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_2">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#modelfactory">ModelFactory</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_3">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scorecardbinninghelper">ScorecardBinningHelper</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_4">Methods</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../utils/">utils</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">CreditScore</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">CreditScore</li>
+      <li class="breadcrumb-item active">train</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="creditscoretrain">CreditScore.train</h1>
+<p>Model training utilities for scorecards and logistic regression.</p>
+<h2 id="classes">Classes</h2>
+<h3 id="basemodel"><code>BaseModel</code></h3>
+<p>Abstract base class for all models.</p>
+<h4 id="methods">Methods</h4>
+<ul>
+<li><code>fit(self, X_train, y_train, **kwargs)</code></li>
+<li>
+<p>Fit the model.</p>
+</li>
+<li>
+<p><code>predict_proba(self, X)</code></p>
+</li>
+<li>
+<p>Predict probabilities.</p>
+</li>
+<li>
+<p><code>get_coefficients(self)</code></p>
+</li>
+<li>Get model coefficients.</li>
+</ul>
+<h3 id="optbinningscorecardmodel"><code>OptbinningScorecardModel</code></h3>
+<p>Scorecard model using optbinning package.
+This maintains the exact approach from streamlit-app.py.</p>
+<h4 id="methods_1">Methods</h4>
+<ul>
+<li><code>fit(self, X_train, y_train, hyperparameter_search, param_grid, cv, **kwargs)</code></li>
+<li>Fit the scorecard model.</li>
+</ul>
+<p>Args:
+    X_train: Training features
+    y_train: Training target
+    hyperparameter_search: Whether to perform hyperparameter search
+    param_grid: Grid of parameters for search
+    cv: Number of cross-validation folds</p>
+<ul>
+<li><code>predict_proba(self, X)</code></li>
+<li>
+<p>Predict probabilities using the scorecard.</p>
+</li>
+<li>
+<p><code>score(self, X)</code></p>
+</li>
+<li>
+<p>Calculate scorecard scores.</p>
+</li>
+<li>
+<p><code>get_coefficients(self)</code></p>
+</li>
+<li>
+<p>Get scorecard coefficients from the underlying estimator.</p>
+</li>
+<li>
+<p><code>get_scorecard_table(self, style)</code></p>
+</li>
+<li>
+<p>Get the detailed scorecard table.</p>
+</li>
+<li>
+<p><code>optimize_threshold(self, X_val, y_val, use_event_rate, y_train)</code></p>
+</li>
+<li>
+<p>Choose a probability threshold using PR/KS/CAP scoring.</p>
+</li>
+<li>
+<p><code>predict_class(self, X, threshold)</code></p>
+</li>
+<li>Return hard class predictions (0/1).</li>
+</ul>
+<h2 id="parameters">Parameters</h2>
+<p>X : pd.DataFrame
+    Feature matrix.
+threshold : float | None
+    Cut-off probability.  If <em>None</em>, the model’s
+    <code>self.optimal_threshold</code> is used (must be set beforehand by
+    calling <code>optimize_threshold</code>).</p>
+<h2 id="returns">Returns</h2>
+<p>np.ndarray
+    Array of 0/1 predictions.</p>
+<h3 id="statsmodelslogisticmodel"><code>StatsmodelsLogisticModel</code></h3>
+<p>Logistic regression model using statsmodels.
+This maintains the exact approach from coefficients.py.</p>
+<h4 id="methods_2">Methods</h4>
+<ul>
+<li><code>fit(self, X_train, y_train, target_name, check_separation, **kwargs)</code></li>
+<li>Fit the statsmodels logistic regression.</li>
+</ul>
+<p>Args:
+    X_train: Training features
+    y_train: Training target
+    target_name: Name for the target variable in formula
+    check_separation: Whether to check for perfect separation</p>
+<ul>
+<li><code>predict_proba(self, X)</code></li>
+<li>
+<p>Predict probabilities.</p>
+</li>
+<li>
+<p><code>get_coefficients(self)</code></p>
+</li>
+<li>
+<p>Get model coefficients with standard errors and p-values.</p>
+</li>
+<li>
+<p><code>get_summary(self)</code></p>
+</li>
+<li>
+<p>Get full model summary.</p>
+</li>
+<li>
+<p><code>get_model_stats(self)</code></p>
+</li>
+<li>
+<p>Get model-level statistics.</p>
+</li>
+<li>
+<p><code>diagnose_convergence(self)</code></p>
+</li>
+<li>Diagnose potential convergence issues.</li>
+</ul>
+<p>Returns:
+    Dictionary with diagnostic information</p>
+<h3 id="modelfactory"><code>ModelFactory</code></h3>
+<p>Factory class for creating different model types.</p>
+<h4 id="methods_3">Methods</h4>
+<ul>
+<li><code>create_model(model_type, **kwargs)</code></li>
+<li>Create a model instance based on type.</li>
+</ul>
+<p>Args:
+    model_type: Type of model ('scorecard' or 'statsmodels')
+    **kwargs: Additional parameters for model initialization</p>
+<p>Returns:
+    BaseModel instance</p>
+<h3 id="scorecardbinninghelper"><code>ScorecardBinningHelper</code></h3>
+<p>Helper class for binning operations used by scorecard models.</p>
+<h4 id="methods_4">Methods</h4>
+<ul>
+<li><code>perform_binning(X_train, X_test, y_train, feature_names)</code></li>
+<li>Perform binning on train and test data.</li>
+</ul>
+<p>Args:
+    X_train: Training features
+    X_test: Test features
+    y_train: Training target
+    feature_names: List of feature names</p>
+<p>Returns:
+    Tuple of (binning_process, X_train_binned, X_test_binned)</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../predict/" class="btn btn-neutral float-left" title="predict"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../utils/" class="btn btn-neutral float-right" title="utils">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../predict/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../utils/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

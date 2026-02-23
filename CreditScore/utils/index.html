@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://localhost:8000/CreditScore/utils/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>utils - CreditScore</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "utils";
+        var mkdocs_page_input_path = "CreditScore/utils.md";
+        var mkdocs_page_url = "/CreditScore/utils/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> CreditScore
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">workflows</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../main/">main</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CreditScore</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../plotter/">plotter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../data/">data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../evaluate/">evaluate</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../predict/">predict</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../train/">train</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">utils</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#modelmetrics">ModelMetrics</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#visualizationhelper">VisualizationHelper</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_1">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#configurationmanager">ConfigurationManager</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_2">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cachemixin">CacheMixin</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_3">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#logisticwrapper">LogisticWrapper</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#definitionmatcher">DefinitionMatcher</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_4">Methods</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#functions">Functions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#generate_model_summaryy_train-y_test-y_train_pred-y_test_pred-scorecard_model-threshold_summary-feature_filter">generate_model_summary(y_train, y_test, y_train_pred, y_test_pred, scorecard_model, threshold_summary, feature_filter)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#clean_add_results_to_docxself-doc-results">clean_add_results_to_docx(self, doc, results)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#calculate_ranking_based_cap_scorey_true-y_pred_proba-preds">calculate_ranking_based_cap_score(y_true, y_pred_proba, preds)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#run_integrity_checksdf">run_integrity_checks(df)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#dict_to_markdownd-indent">dict_to_markdown(d, indent)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ensure_dataframeobj-col_name">ensure_dataframe(obj, col_name)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">CreditScore</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">CreditScore</li>
+      <li class="breadcrumb-item active">utils</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="creditscoreutils">CreditScore.utils</h1>
+<p>Shared helpers for metrics, reporting, and data cleaning.</p>
+<h2 id="classes">Classes</h2>
+<h3 id="modelmetrics"><code>ModelMetrics</code></h3>
+<p>Common model metrics calculations.</p>
+<h4 id="methods">Methods</h4>
+<ul>
+<li><code>calculate_cap_curve(y_true, y_pred_proba)</code></li>
+<li>Compute the CAP (Cumulative Accuracy Profile) score.</li>
+</ul>
+<p>Args:
+    y_true: True labels
+    y_pred_proba: Predicted probabilities</p>
+<p>Returns:
+    CAP score (area under the CAP curve)</p>
+<ul>
+<li><code>calculate_metrics(y_true, y_pred_proba, y_pred_class)</code></li>
+<li>
+<p>Calculate both probability-based and classification-based metrics.</p>
+</li>
+<li>
+<p><code>create_metrics_comparison_df(metrics_dict)</code></p>
+</li>
+<li>Create comparison DataFrame from metrics dictionary.</li>
+</ul>
+<p>Args:
+    metrics_dict: Dictionary of model_name -&gt; metrics</p>
+<p>Returns:
+    DataFrame with metrics comparison</p>
+<h3 id="visualizationhelper"><code>VisualizationHelper</code></h3>
+<p>Common visualization utilities.</p>
+<h4 id="methods_1">Methods</h4>
+<ul>
+<li><code>setup_plot_style()</code></li>
+<li>
+<p>Set up consistent plot styling.</p>
+</li>
+<li>
+<p><code>save_figure(fig, save_path, dpi)</code></p>
+</li>
+<li>Save figure with consistent settings.</li>
+</ul>
+<p>Args:
+    fig: Matplotlib figure
+    save_path: Path to save figure
+    dpi: DPI for saved figure</p>
+<ul>
+<li><code>create_subplots(n_plots, n_cols, figsize)</code></li>
+<li>Create subplots with consistent sizing.</li>
+</ul>
+<p>Args:
+    n_plots: Number of plots needed
+    n_cols: Number of columns
+    figsize: Figure size (auto-calculated if None)</p>
+<p>Returns:
+    Tuple of (figure, axes)</p>
+<h3 id="configurationmanager"><code>ConfigurationManager</code></h3>
+<p>Manage model configurations using JSON config files.</p>
+<h4 id="methods_2">Methods</h4>
+<ul>
+<li><code>scorecard_args()</code></li>
+<li>
+<p>Get scorecard configuration for model initialization.</p>
+</li>
+<li>
+<p><code>get_scorecard_fit_config()</code></p>
+</li>
+<li>
+<p>Get cross-validation configuration for model fitting.</p>
+</li>
+<li>
+<p><code>binning_args()</code></p>
+</li>
+<li>
+<p>Get binning configuration optimized for medical data with class imbalance.</p>
+</li>
+<li>
+<p><code>monitoring_args()</code></p>
+</li>
+<li>
+<p>Get monitoring configuration.</p>
+</li>
+<li>
+<p><code>power_analysis_args()</code></p>
+</li>
+<li>
+<p>Get power analysis configuration.</p>
+</li>
+<li>
+<p><code>variable_selection_args()</code></p>
+</li>
+<li>Get variable selection configuration.</li>
+</ul>
+<h3 id="cachemixin"><code>CacheMixin</code></h3>
+<p>Cached helpers for model fitting and diagnostics.</p>
+<h4 id="methods_3">Methods</h4>
+<ul>
+<li><code>fit_logit_model(X, y, target_column)</code></li>
+<li>
+<p>Fit a statsmodels logistic model and return coefficients.</p>
+</li>
+<li>
+<p><code>compute_vif(df)</code></p>
+</li>
+<li>
+<p>Compute variance inflation factors for numeric columns.</p>
+</li>
+<li>
+<p><code>to_csv_bytes(df)</code></p>
+</li>
+<li>Serialize a DataFrame to UTF-8 CSV bytes.</li>
+</ul>
+<h3 id="logisticwrapper"><code>LogisticWrapper</code></h3>
+<p>Expose scikit-learn coefficients for SHAP compatibility.</p>
+<h3 id="definitionmatcher"><code>DefinitionMatcher</code></h3>
+<p>Match feature names to phenotype definitions.</p>
+<h4 id="methods_4">Methods</h4>
+<ul>
+<li><code>get_definition(self, feature)</code></li>
+<li>Returns a single string containing the matched phenotype's return_columns entries
+relevant to <code>feature</code>. Uses multiple strategies:
+  1) Exact return_column key match
+  2) Exact phenotype name match
+  3) Exact composite "phenotype|return_key" match
+  4) Token-sort fuzzy match across all candidates
+If no match above threshold, returns "No definition available".</li>
+</ul>
+<h2 id="functions">Functions</h2>
+<h3 id="generate_model_summaryy_train-y_test-y_train_pred-y_test_pred-scorecard_model-threshold_summary-feature_filter"><code>generate_model_summary(y_train, y_test, y_train_pred, y_test_pred, scorecard_model, threshold_summary, feature_filter)</code></h3>
+<p>Generate a structured summary of model accuracy, top risk factors, and dataset distribution.</p>
+<h3 id="clean_add_results_to_docxself-doc-results"><code>clean_add_results_to_docx(self, doc, results)</code></h3>
+<p>Docx table renderer with custom column sizing.</p>
+<h3 id="calculate_ranking_based_cap_scorey_true-y_pred_proba-preds"><code>calculate_ranking_based_cap_score(y_true, y_pred_proba, preds)</code></h3>
+<p>Score a CAP curve based on ranked predictions.</p>
+<h3 id="run_integrity_checksdf"><code>run_integrity_checks(df)</code></h3>
+<p>Render a Streamlit data integrity summary.</p>
+<h3 id="dict_to_markdownd-indent"><code>dict_to_markdown(d, indent)</code></h3>
+<p>Recursively format dictionary as Markdown</p>
+<h3 id="ensure_dataframeobj-col_name"><code>ensure_dataframe(obj, col_name)</code></h3>
+<p>Ensure an object is represented as a DataFrame.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../train/" class="btn btn-neutral float-left" title="train"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../train/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

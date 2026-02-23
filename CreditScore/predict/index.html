@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://localhost:8000/CreditScore/predict/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>predict - CreditScore</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "predict";
+        var mkdocs_page_input_path = "CreditScore/predict.md";
+        var mkdocs_page_url = "/CreditScore/predict/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> CreditScore
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">workflows</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../main/">main</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CreditScore</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../plotter/">plotter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../data/">data</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../evaluate/">evaluate</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">predict</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#modelpredictor">ModelPredictor</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#scorecardpredictor">ScorecardPredictor</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_1">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#batchpredictor">BatchPredictor</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_2">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#modelserializer">ModelSerializer</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_3">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#predictionexplainer">PredictionExplainer</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_4">Methods</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../train/">train</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../utils/">utils</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">CreditScore</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">CreditScore</li>
+      <li class="breadcrumb-item active">predict</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="creditscorepredict">CreditScore.predict</h1>
+<p>Prediction helpers for trained scorecard and regression models.</p>
+<h2 id="classes">Classes</h2>
+<h3 id="modelpredictor"><code>ModelPredictor</code></h3>
+<p>Base class for making predictions with trained models.</p>
+<h4 id="methods">Methods</h4>
+<ul>
+<li><code>predict_single(self, features, return_proba, threshold)</code></li>
+<li>Make prediction for a single observation.</li>
+</ul>
+<p>Args:
+    features: Dictionary of feature_name -&gt; value
+    return_proba: Whether to return probability or class</p>
+<p>Returns:
+    Prediction (probability or class)</p>
+<ul>
+<li><code>predict_batch(self, X, return_proba, threshold)</code></li>
+<li>Make predictions for multiple observations.</li>
+</ul>
+<p>Args:
+    X: Features DataFrame
+    return_proba: Whether to return probabilities or classes
+    threshold: Classification threshold (if return_proba=False)</p>
+<p>Returns:
+    Array of predictions</p>
+<ul>
+<li><code>predict_with_confidence(self, X, n_iterations, sample_fraction)</code></li>
+<li>Make predictions with confidence intervals using bootstrap.</li>
+</ul>
+<p>Args:
+    X: Features DataFrame
+    n_iterations: Number of bootstrap iterations
+    sample_fraction: Fraction of training data to sample</p>
+<p>Returns:
+    Dictionary with mean predictions and confidence intervals</p>
+<h3 id="scorecardpredictor"><code>ScorecardPredictor</code></h3>
+<p>Predictor specific to scorecard models.</p>
+<h4 id="methods_1">Methods</h4>
+<ul>
+<li><code>predict_score(self, X)</code></li>
+<li>Get scorecard scores for observations.</li>
+</ul>
+<p>Args:
+    X: Features DataFrame</p>
+<p>Returns:
+    Array of scores</p>
+<ul>
+<li><code>predict_with_details(self, features)</code></li>
+<li>Make prediction with detailed scorecard breakdown.</li>
+</ul>
+<p>Args:
+    features: Dictionary of feature_name -&gt; value</p>
+<p>Returns:
+    Dictionary with score, probability, and feature contributions</p>
+<h3 id="batchpredictor"><code>BatchPredictor</code></h3>
+<p>Handle batch predictions with data preprocessing.</p>
+<h4 id="methods_2">Methods</h4>
+<ul>
+<li><code>predict_file(self, file_path, output_path, return_proba)</code></li>
+<li>Make predictions for a file of data.</li>
+</ul>
+<p>Args:
+    file_path: Path to input file (CSV or Excel)
+    output_path: Optional path to save predictions
+    return_proba: Whether to return probabilities</p>
+<p>Returns:
+    DataFrame with original data and predictions</p>
+<h3 id="modelserializer"><code>ModelSerializer</code></h3>
+<p>Save and load trained models.</p>
+<h4 id="methods_3">Methods</h4>
+<ul>
+<li><code>save_model(model, save_path, metadata)</code></li>
+<li>Save model to disk.</li>
+</ul>
+<p>Args:
+    model: Trained model instance
+    save_path: Path to save model
+    metadata: Optional metadata to save with model</p>
+<ul>
+<li><code>load_model(load_path, load_metadata)</code></li>
+<li>Load model from disk.</li>
+</ul>
+<p>Args:
+    load_path: Path to saved model
+    load_metadata: Whether to load metadata</p>
+<p>Returns:
+    Model instance or (model, metadata) tuple</p>
+<h3 id="predictionexplainer"><code>PredictionExplainer</code></h3>
+<p>Explain individual predictions.</p>
+<h4 id="methods_4">Methods</h4>
+<ul>
+<li><code>explain_prediction(self, features, method)</code></li>
+<li>Explain a single prediction.</li>
+</ul>
+<p>Args:
+    features: Dictionary of feature values
+    method: Explanation method ('coefficients' or 'shap')</p>
+<p>Returns:
+    Dictionary with explanation details</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../evaluate/" class="btn btn-neutral float-left" title="evaluate"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../train/" class="btn btn-neutral float-right" title="train">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../evaluate/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../train/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

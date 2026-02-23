@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="http://localhost:8000/CreditScore/evaluate/" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>evaluate - CreditScore</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "evaluate";
+        var mkdocs_page_input_path = "CreditScore/evaluate.md";
+        var mkdocs_page_url = "/CreditScore/evaluate/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> CreditScore
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">workflows</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../main/">main</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">CreditScore</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../plotter/">plotter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../data/">data</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">evaluate</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#classes">Classes</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#rocmetrics">RocMetrics</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#prcmetrics">PrcMetrics</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#modelevaluator">ModelEvaluator</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods">Methods</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#returns">Returns</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#returns_1">Returns</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#scorecardevaluator">ScorecardEvaluator</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_1">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#statsmodelsevaluator">StatsmodelsEvaluator</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_2">Methods</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#modelcomparison">ModelComparison</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#methods_3">Methods</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../predict/">predict</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../train/">train</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../utils/">utils</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">CreditScore</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
+          <li class="breadcrumb-item">CreditScore</li>
+      <li class="breadcrumb-item active">evaluate</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="creditscoreevaluate">CreditScore.evaluate</h1>
+<p>Evaluation metrics, monitoring, and power analysis helpers.</p>
+<h2 id="classes">Classes</h2>
+<h3 id="rocmetrics"><code>RocMetrics</code></h3>
+<p>Container for ROC curve arrays and AUC.</p>
+<h3 id="prcmetrics"><code>PrcMetrics</code></h3>
+<p>Container for precision-recall arrays and AUC.</p>
+<h3 id="modelevaluator"><code>ModelEvaluator</code></h3>
+<p>Thin layer that ONLY computes metrics – no plotting takes place here.</p>
+<h4 id="methods">Methods</h4>
+<ul>
+<li><code>roc_auc(y_true, y_pred_proba)</code></li>
+<li>Compute ROC curve and AUC.</li>
+</ul>
+<h2 id="parameters">Parameters</h2>
+<p>y_true          : ground-truth labels (binary)
+y_pred_proba    : positive-class probabilities (N or Nx2)</p>
+<h2 id="returns">Returns</h2>
+<p>RocMetrics</p>
+<ul>
+<li><code>prc_auc(y_true, y_pred_proba)</code></li>
+<li>
+<p>Compute Precision-Recall curve and AUC-PR.</p>
+</li>
+<li>
+<p><code>predict_proba(self, X)</code></p>
+</li>
+<li>
+<p>Helper so UI code can obtain probabilities in a single line even if
+the wrapped model returns a shape (N,) instead of (N,2).</p>
+</li>
+<li>
+<p><code>compute_precision_recall(self, y_true, y_pred_proba)</code></p>
+</li>
+<li>Compute precision, recall and AUC-PR.</li>
+</ul>
+<h2 id="returns_1">Returns</h2>
+<p>precision : ndarray
+recall    : ndarray
+auc_pr    : float</p>
+<h3 id="scorecardevaluator"><code>ScorecardEvaluator</code></h3>
+<p>Evaluator specific to scorecard models.</p>
+<h4 id="methods_1">Methods</h4>
+<ul>
+<li><code>initialize_monitoring(self, psi_method, psi_n_bins, psi_min_bin_size, show_digits)</code></li>
+<li>Initialize scorecard monitoring.</li>
+</ul>
+<p>Args:
+    psi_method: Method for PSI calculation
+    psi_n_bins: Number of bins for PSI
+    psi_min_bin_size: Minimum bin size
+    show_digits: Number of digits to show</p>
+<ul>
+<li><code>fit_monitoring(self, X_test, y_test, X_train, y_train)</code></li>
+<li>Fit the monitoring system.</li>
+</ul>
+<p>Args:
+    X_test: Test features
+    y_test: Test labels
+    X_train: Training features
+    y_train: Training labels</p>
+<ul>
+<li><code>get_psi_report(self)</code></li>
+<li>
+<p>Get PSI report table.</p>
+</li>
+<li>
+<p><code>plot_psi(self)</code></p>
+</li>
+<li>Plot PSI values.</li>
+</ul>
+<h3 id="statsmodelsevaluator"><code>StatsmodelsEvaluator</code></h3>
+<p>Evaluator specific to statsmodels logistic regression.</p>
+<h4 id="methods_2">Methods</h4>
+<ul>
+<li><code>power_analysis_wald(self, coeff_name, alpha, power, tails)</code></li>
+<li>Perform Wald-based power analysis.</li>
+</ul>
+<p>Args:
+    coeff_name: Name of coefficient to test
+    alpha: Significance level
+    power: Desired power
+    tails: "One" or "Two" tailed test</p>
+<p>Returns:
+    Required sample size</p>
+<ul>
+<li><code>power_analysis_simulation(self, coeff_name, sample_sizes, n_simulations, alpha)</code></li>
+<li>Perform simulation-based power analysis.</li>
+</ul>
+<p>Args:
+    coeff_name: Name of coefficient to test
+    sample_sizes: List of sample sizes to test
+    n_simulations: Number of simulations per size
+    alpha: Significance level</p>
+<p>Returns:
+    DataFrame with sample sizes and power estimates</p>
+<ul>
+<li><code>plot_power_curve(self, power_df, target_power, save_path)</code></li>
+<li>Plot power curve from simulation results.</li>
+</ul>
+<p>Args:
+    power_df: DataFrame with 'n' and 'power' columns
+    target_power: Target power level to highlight
+    save_path: Optional path to save figure</p>
+<p>Returns:
+    matplotlib figure</p>
+<ul>
+<li><code>get_gpower_parameters(self, coeff_name, X, y)</code></li>
+<li>Calculate parameters for G*Power replication.</li>
+</ul>
+<p>Args:
+    coeff_name: Name of coefficient
+    X: Feature data
+    y: Target data</p>
+<p>Returns:
+    Dictionary of G*Power parameters</p>
+<h3 id="modelcomparison"><code>ModelComparison</code></h3>
+<p>Compare multiple models.</p>
+<h4 id="methods_3">Methods</h4>
+<ul>
+<li><code>compare_roc_curves(models, X_test, y_test, save_path)</code></li>
+<li>Compare ROC curves for multiple models.</li>
+</ul>
+<p>Args:
+    models: Dictionary of model_name -&gt; model instance
+    X_test: Test features
+    y_test: Test labels
+    save_path: Optional path to save figure</p>
+<p>Returns:
+    matplotlib figure</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../data/" class="btn btn-neutral float-left" title="data"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../predict/" class="btn btn-neutral float-right" title="predict">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../data/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../predict/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
