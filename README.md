@@ -36,8 +36,3 @@ streamlit run UserInterface/credit_score_app.py
 mkdocs serve
 ```
 
-### Publish to GitHub Pages
-```bash
-mkdocs gh-deploy
-```
-
