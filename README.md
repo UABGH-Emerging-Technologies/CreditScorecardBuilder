@@ -40,5 +40,4 @@ mkdocs serve
 ```bash
 mkdocs gh-deploy
 ```
-Set `site_url` in `mkdocs.yml` to your GitHub Pages URL:
-`https://<github-username>.github.io/<repo-name>/`.
+
