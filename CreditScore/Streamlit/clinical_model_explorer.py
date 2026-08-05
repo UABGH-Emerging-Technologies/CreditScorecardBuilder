@@ -13,7 +13,7 @@ from CreditScore.analysis import PowerAnalysisComponent
 from CreditScore.model import ModellingComponent
 from CreditScore.Streamlit.streamlit_interface import BaseHandler
 from CreditScore.utils import ensure_dataframe
-from llm_utils.aiweb_common.streamlit.page_renderer import StreamlitUIHelper
+from aiweb_common.streamlit.page_renderer import StreamlitUIHelper
 
 
 class ClinicalModelExplorer(BaseHandler):

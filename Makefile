@@ -1,35 +1,38 @@
-# Makefile
-SHELL = /bin/bash
+SHELL := /bin/bash
 
-# help
-.PHONY: help
+.PHONY: help sync lock run test style docs clean
+
 help:
 	@echo "Commands:"
-	@echo "venv    : creates a virtual environment."
-	@echo "style   : executes style formatting."
-	@echo "clean   : cleans all unnecessary files."
+	@echo "  sync   Create/update .venv from uv.lock"
+	@echo "  lock   Resolve dependencies and update uv.lock"
+	@echo "  run    Launch the Streamlit UI"
+	@echo "  test   Run the test suite"
+	@echo "  style  Format and lint the codebase"
+	@echo "  docs   Preview the documentation"
+	@echo "  clean  Remove generated Python and test artifacts"
 
-# Styling
-.PHONY: style
+sync:
+	uv sync --locked
+
+lock:
+	uv lock
+
+run:
+	uv run streamlit run UserInterface/credit_score_app.py
+
+test:
+	uv run pytest
+
 style:
-	black .
-	flake8
-	python3 -m isort .
+	uv run black .
+	uv run isort .
+	uv run flake8
 
-# Environment
-.ONESHELL:
-venv:
-	python3 -m venv venv
-	source venv/bin/activate && \
-	python3 -m pip install pip setuptools wheel && \
-	python3 -m pip install -e .
+docs:
+	uv run mkdocs serve
 
-# Cleaning
-.PHONY: clean
-clean: style
-	find . -type f -name "*.DS_Store" -ls -delete
-	find . | grep -E "(__pycache__|\.pyc|\.pyo)" | xargs rm -rf
-	find . | grep -E ".pytest_cache" | xargs rm -rf
-	find . | grep -E ".ipynb_checkpoints" | xargs rm -rf
+clean:
+	find . -type f \( -name "*.pyc" -o -name "*.pyo" -o -name ".DS_Store" \) -delete
+	find . -type d \( -name "__pycache__" -o -name ".pytest_cache" -o -name ".ipynb_checkpoints" \) -prune -exec rm -rf {} +
 	rm -f .coverage
-
