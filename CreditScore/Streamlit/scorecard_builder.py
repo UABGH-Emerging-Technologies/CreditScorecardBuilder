@@ -63,6 +63,16 @@ class ScorecardBuilder(BaseHandler):
             # "test_metrics": "Test Metrics",
         }
 
+    def _render_table(self, df: pd.DataFrame, max_rows: int = 500) -> None:
+        display_df = df.head(max_rows).copy()
+        if not isinstance(display_df.index, pd.RangeIndex):
+            display_df = display_df.reset_index()
+        for col in display_df.select_dtypes(include=["object"]).columns:
+            display_df[col] = display_df[col].map(lambda value: "" if pd.isna(value) else str(value))
+        if len(df) > max_rows:
+            self.ui.info(f"Showing first {max_rows:,} of {len(df):,} rows.")
+        self.ui.markdown(display_df.to_html(index=False, escape=True), unsafe_allow_html=True)
+
     # ------------------------------------------------------------------ render
     def render(self) -> None:  # noqa: C901  (UI-heavy)
         """Render the Streamlit scorecard builder UI and actions."""
@@ -76,7 +86,7 @@ class ScorecardBuilder(BaseHandler):
         ss, ns = self.ui.session_state, self._key
         if ss.get(ns("show_data_preview"), False):
             with self.ui.expander("🗂️ See data preview", expanded=False):
-                self.ui.dataframe(df)
+                self.ui.dataframe(df.head(500))
 
         target, feats = self._select_columns(df)
         feature_filter = self.ui.session_state[self._key("feature_category")]
@@ -358,7 +368,7 @@ class ScorecardBuilder(BaseHandler):
                 if "Bin_Display" in scorecard_df_display.columns:
                     scorecard_df_display["Bin"] = scorecard_df_display["Bin_Display"].astype(str)
                     scorecard_df_display = scorecard_df_display.drop(columns=["Bin_Display"])
-                self.ui.dataframe(scorecard_df_display)
+                self._render_table(scorecard_df_display)
 
         if plot_visibility.get("distribution"):
             with self.ui.expander("📊 Score Distribution", expanded=False):
@@ -369,12 +379,12 @@ class ScorecardBuilder(BaseHandler):
                 if plot_visibility.get("psi"):
                     self.ui.pyplot(ss[ns("figs")]["psi"])
                 if table_visibility.get("psi_table"):
-                    self.ui.dataframe(ss[ns("psi_table")])
+                    self._render_table(ss[ns("psi_table")])
 
         if table_visibility.get("metrics_comparison_df"):
             with self.ui.expander("📋 Detailed Metrics Comparison", expanded=False):
                 df = ss[ns("metrics_comparison_df")]
-                self.ui.dataframe(df)
+                self._render_table(df)
 
         self.ui.info(ss[ns("summary")])
 

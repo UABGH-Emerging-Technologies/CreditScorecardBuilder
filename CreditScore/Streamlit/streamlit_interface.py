@@ -23,13 +23,22 @@ from typing import Any, Dict, List, Optional, Tuple
 import matplotlib.pyplot as plt
 import pandas as pd
 import streamlit as st
-from aiweb_common.file_operations.upload_manager import StreamlitUploadManager
 
 from CreditScore.data import _filter_features_by_category
 from CreditScore.report_builder import ReportBuilder, compile_report_bytes
 from aiweb_common.streamlit.page_renderer import StreamlitUIHelper
 
 warnings.filterwarnings("ignore", category=FutureWarning)
+
+MAX_UPLOAD_SIZE_MB = 200
+
+
+@st.cache_data(show_spinner="Loading uploaded data...")
+def read_uploaded_dataframe(file_name: str, file_bytes: bytes) -> pd.DataFrame:
+    """Read an uploaded CSV/XLSX once per file content."""
+    from CreditScore.data import DataLoader
+
+    return DataLoader.load_file(file_name, file_obj=io.BytesIO(file_bytes))
 
 # ────────────────────────────────────────────────────────────────────────────
 # Optional small utilities kept here so children don't need to re-import them
@@ -130,20 +139,19 @@ class BaseHandler(ABC):
             self.ui.info("Please upload a file to continue.")
             return pd.DataFrame()
 
-        # 1) try aiweb_common upload-manager (handles Excel sheets nicely)
+        file_size_mb = getattr(up_file, "size", 0) / (1024 * 1024)
+        if file_size_mb > MAX_UPLOAD_SIZE_MB:
+            self.ui.error(
+                f"{up_file.name} is {file_size_mb:.1f} MB. "
+                f"Please upload a file no larger than {MAX_UPLOAD_SIZE_MB} MB."
+            )
+            return pd.DataFrame()
+
         try:
-            df, _meta = StreamlitUploadManager(
-                up_file, accept_multiple_files=False
-            ).process_upload()
-            return df
-        except Exception:
-            pass
-
-        # 2) fallback to generic loader
-        from CreditScore.data import DataLoader
-
-        loader = DataLoader()
-        return loader.load_file(up_file.name, file_obj=up_file)
+            return read_uploaded_dataframe(up_file.name, up_file.getvalue())
+        except Exception as exc:
+            self.ui.error(f"Could not load {up_file.name}: {exc}")
+            return pd.DataFrame()
 
     # --------------------------------------------------------- col select
     def _select_columns(self, data: pd.DataFrame) -> Tuple[str, List[str]]:
@@ -268,7 +276,6 @@ class BaseHandler(ABC):
             ss[ns("table_visibility")] = {
                 k: k in self.default_visible_tables for k in self.table_options
             }
-
         sb.subheader(f"🧭 User Options for {self.page_title}")
 
         if self.page_title == "Clinical Risk Scorecard Builder":
@@ -292,7 +299,7 @@ class BaseHandler(ABC):
             # )
             sb.checkbox(
                 "Show data preview",
-                value=ss.get(ns("show_data_preview"), True),
+                value=ss.get(ns("show_data_preview"), False),
                 key=ns("show_data_preview"),
                 help="Expand to inspect the uploaded dataset",
             )

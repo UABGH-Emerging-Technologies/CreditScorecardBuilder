@@ -41,10 +41,12 @@ class DataLoader:
         try:
             if extension == ".csv":
                 if file_obj:
+                    file_obj.seek(0)
                     return pd.read_csv(file_obj)
                 return pd.read_csv(file_path)
             elif extension in [".xlsx", ".xls"]:
                 if file_obj:
+                    file_obj.seek(0)
                     return pd.read_excel(file_obj)
                 return pd.read_excel(file_path)
             else:
