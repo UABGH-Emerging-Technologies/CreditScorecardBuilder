@@ -32,6 +32,11 @@ dependencies = [
   "plotly==6.5.2",
   "prompty==0.1.50",
   "promptflow==1.18.2",
+  # pyarrow 25.0.0 segfaults (SIGSEGV in pa.array/Table.from_pandas) when the
+  # conversion runs on a Streamlit script-rerun thread, killing the server with
+  # no traceback. Any st.dataframe() call on the second and later reruns trips
+  # it. 21.x-24.x are unaffected.
+  "pyarrow==24.0.0",
   "pydantic==2.12.5",
   "pymupdf==1.27.1",
   "pypandoc==1.16.2",
