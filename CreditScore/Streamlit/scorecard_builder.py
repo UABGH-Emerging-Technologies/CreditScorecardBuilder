@@ -31,7 +31,7 @@ from CreditScore.utils import (
     ModelMetrics,
     generate_model_summary,
 )
-from llm_utils.aiweb_common.streamlit.page_renderer import StreamlitUIHelper
+from aiweb_common.streamlit.page_renderer import StreamlitUIHelper
 
 
 # ────────────────────────────────────────────────────────────────────────────

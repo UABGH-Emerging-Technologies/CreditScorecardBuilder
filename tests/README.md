@@ -221,7 +221,7 @@ The test suite aims for:
 ### Common Issues
 
 1. **Import Errors**: Ensure `PYTHONPATH` includes project root
-2. **Missing Dependencies**: Run `pip install -e ".[dev]"` 
+2. **Missing Dependencies**: Run `uv sync --locked`
 3. **Test Data Issues**: Check that fixtures generate valid data
 4. **OptBinning Warnings**: Warnings are filtered in pytest.ini
 5. **Slow Tests**: Use `--category regression` for quick validation

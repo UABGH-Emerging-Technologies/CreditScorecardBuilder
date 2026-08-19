@@ -1,14 +1,94 @@
-# Black formatting
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "credit-score"
+version = "0.1.0"
+description = "Tools for building and exploring clinical risk scorecards."
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+authors = [
+  { name = "Kameshwari S.", email = "ksoundararajan@uabmc.edu" },
+]
+dependencies = [
+  "aiweb-common",
+  "altair==6.0.0",
+  "azure-ai-formrecognizer==3.3.3",
+  "docx==0.2.4",
+  "fastapi==0.131.0",
+  "jupyter==1.1.1",
+  "langchain-community==0.4.1",
+  "langchain-core==1.2.31",
+  "langchain-openai==1.1.14",
+  "langchain-prompty==1.0.0",
+  "matplotlib==3.10.8",
+  "numpy==2.2.6",
+  "numpyencoder==0.3.2",
+  "openpyxl==3.1.5",
+  "optbinning==0.21.0",
+  "pandas==2.3.3",
+  "pdfplumber==0.11.9",
+  "plotly==6.5.2",
+  "prompty==0.1.50",
+  "promptflow==1.18.2",
+  # pyarrow 25.0.0 segfaults (SIGSEGV in pa.array/Table.from_pandas) when the
+  # conversion runs on a Streamlit script-rerun thread, killing the server with
+  # no traceback. Any st.dataframe() call on the second and later reruns trips
+  # it. 21.x-24.x are unaffected.
+  "pyarrow==24.0.0",
+  "pydantic==2.12.5",
+  "pymupdf==1.27.1",
+  "pypandoc==1.16.2",
+  "pyodbc==5.3.0",
+  "python-docx==1.2.0",
+  "python-magic==0.4.27",
+  "rapidfuzz==3.14.3",
+  "rich==14.3.3",
+  "scikit-learn==1.7.2",
+  "scipy==1.15.3",
+  "shap==0.49.1",
+  "statsmodels==0.14.6",
+  "streamlit==1.54.0",
+  "typer==0.24.1",
+]
+
+[dependency-groups]
+dev = [
+  "black==26.1.0",
+  "flake8==7.3.0",
+  "isort==8.0.0",
+  "mkdocs==1.6.1",
+  "mkdocs-material==9.7.2",
+  "mkdocstrings==1.0.3",
+  "mlflow",
+  "pip-tools",
+  "pytest>=6.0",
+  "pytest-cov>=2.10",
+  "pytest-mock>=3.0",
+  "pytest-timeout>=1.4",
+  "pytest-xdist>=2.0",
+]
+
+[tool.uv.sources]
+aiweb-common = { git = "https://github.com/UABPeriopAI/llm_utils.git", branch = "develop" }
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["CreditScore*", "config*"]
+namespaces = true
+
 [tool.black]
 line-length = 100
 include = '\.pyi?$'
 exclude = '''
 /(
-      .eggs         # exclude a few common directories in the
-    | .git          # root of the project
+      .eggs
+    | .git
     | .hg
     | .mypy_cache
     | .tox
+    | .venv
     | venv
     | _build
     | buck-out
@@ -17,10 +97,9 @@ exclude = '''
   )/
 '''
 
-# iSort
 [tool.isort]
 profile = "black"
-line_length = 79
+line_length = 100
 multi_line_output = 3
 include_trailing_comma = true
-virtual_env = "venv"
+skip = [".gitignore", ".dockerignore", ".venv"]

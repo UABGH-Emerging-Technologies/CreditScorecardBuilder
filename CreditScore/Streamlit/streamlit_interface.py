@@ -27,7 +27,7 @@ from aiweb_common.file_operations.upload_manager import StreamlitUploadManager
 
 from CreditScore.data import _filter_features_by_category
 from CreditScore.report_builder import ReportBuilder, compile_report_bytes
-from llm_utils.aiweb_common.streamlit.page_renderer import StreamlitUIHelper
+from aiweb_common.streamlit.page_renderer import StreamlitUIHelper
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
